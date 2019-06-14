@@ -5,13 +5,16 @@ const YAML = require('yamljs');
 
 class ApiSchema {
 
-	constructor(entity, action) {
-		this.entity = entity;
-		this.action = action;
+	get pathParameters() {
+		return this._pathParameters;
+	}
+
+	set pathParameters(pathParameters) {
+		this._pathParameters = pathParameters;
 	}
 
 	get schemaPath() {
-		return `./view-schemas/${this.entity}/${this.action}.yml`;
+		return `./view-schemas/${this.pathParameters.entity}/${this.pathParameters.action}.yml`;
 	}
 
 	validate() {

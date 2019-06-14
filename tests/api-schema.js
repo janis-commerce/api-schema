@@ -24,7 +24,11 @@ describe('Schema API', function() {
 
 			const fsAccessStub = sandbox.stub(fs, 'access');
 			fsAccessStub.callsFake((filePath, callback) => callback(new Error()));
-			const schemaApi = new ApiSchema('someEntity', 'someAction');
+			const schemaApi = new ApiSchema();
+			schemaApi.pathParameters = {
+				entity: 'someEntity',
+				action: 'someAction'
+			};
 
 			await assert.rejects(() => schemaApi.validate());
 
@@ -36,7 +40,11 @@ describe('Schema API', function() {
 
 			const fsAccessStub = sandbox.stub(fs, 'access');
 			fsAccessStub.callsFake((filePath, callback) => callback());
-			const schemaApi = new ApiSchema('someEntity', 'someAction');
+			const schemaApi = new ApiSchema();
+			schemaApi.pathParameters = {
+				entity: 'someEntity',
+				action: 'someAction'
+			};
 
 			const validationResult = await schemaApi.validate();
 
@@ -55,7 +63,11 @@ describe('Schema API', function() {
 			const yamlLoadStub = sandbox.stub(YAML, 'load');
 			yamlLoadStub.throws(new Error('Some fake error'));
 
-			const schemaApi = new ApiSchema('someEntity', 'someAction');
+			const schemaApi = new ApiSchema();
+			schemaApi.pathParameters = {
+				entity: 'someEntity',
+				action: 'someAction'
+			};
 			const response = await schemaApi.process();
 
 			assert.deepStrictEqual(response, {
@@ -73,7 +85,11 @@ describe('Schema API', function() {
 			const yamlLoadStub = sandbox.stub(YAML, 'load');
 			yamlLoadStub.returns(schema);
 
-			const schemaApi = new ApiSchema('someEntity', 'someAction');
+			const schemaApi = new ApiSchema();
+			schemaApi.pathParameters = {
+				entity: 'someEntity',
+				action: 'someAction'
+			};
 			const response = await schemaApi.process();
 
 			assert.deepStrictEqual(response, { body: schema });
