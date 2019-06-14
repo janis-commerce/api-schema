@@ -20,11 +20,16 @@ const { ApiSchema } = require('@janiscommerce/api-schema');
 
 (async () => {
 
-	const apiSchema = new ApiSchema('someEntity', 'someAction');
+	const apiSchema = new ApiSchema();
+
+	apiSchema.pathParameters = {
+		entity: 'someEntity',
+		action: 'someAction'
+	};
 
 	await apiSchema.validate();
 
-	const response = ApiSchema.validate();
+	const response = ApiSchema.process();
 
 })();
 ```
