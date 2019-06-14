@@ -1,0 +1,38 @@
+{
+  "name": "@janiscommerce/api-schema",
+  "version": "1.3.0",
+  "description": "A package to handle JANIS Views Schema APIs",
+  "main": "index.js",
+  "scripts": {
+    "test": "export TEST_ENV=true; mocha --exit -R nyan --recursive tests/",
+    "watch-test": "export TEST_ENV=true; mocha --exit -R nyan -w --recursive tests/",
+    "test-ci": "nyc --reporter=html --reporter=text mocha --recursive tests/",
+    "coverage": "nyc npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/janis-commerce/api-schema.git"
+  },
+  "author": "Janis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/janis-commerce/api-schema/issues"
+  },
+  "homepage": "https://github.com/janis-commerce/api-schema#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "./hooks/pre-commit $HUSKY_GIT_PARAMS"
+    }
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.3",
+    "mocha": "^5.2.0",
+    "nyc": "^14.1.1",
+    "sinon": "^7.3.2"
+  },
+  "dependencies": {
+    "yamljs": "^0.3.0"
+  }
+}
