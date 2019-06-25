@@ -1,6 +1,6 @@
 'use strict';
 
-const ApiSchema = require('./src/api-schema');
+const ApiSchema = require('./lib/api-schema');
 
 module.exports = {
 	ApiSchema
